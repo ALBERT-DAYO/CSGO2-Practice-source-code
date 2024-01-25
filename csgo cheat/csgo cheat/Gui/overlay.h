@@ -20,10 +20,10 @@ namespace Overlay
 {
 
     inline RECT GameSize = {};
-    inline POINT GamePoint = {};
+   inline  POINT GamePoint = {};
 
     // Menu
-    inline bool ShowMenu = false;
+     inline bool ShowMenu = false;
 
 
     void m_Menu();
@@ -31,45 +31,45 @@ namespace Overlay
     void Cheat();
 
 
-    inline   void ShowRawImage(unsigned char* image, int width, int height);
+       void ShowRawImage(unsigned char* image, int width, int height);
  
-    inline  void Text(std::string Text, Vec2 Pos, ImColor Color, float FontSize = 15, bool KeepCenter = false);
+      void Text(std::string Text, Vec2 Pos, ImColor Color, float FontSize = 15, bool KeepCenter = false);
 
-    inline  void MyText(std::string Text, bool isCenter);
+      void MyText(std::string Text, bool isCenter);
    
-    inline  void StrokeText(std::string Text, Vec2 Pos, ImColor Color, float FontSize = 15, bool KeepCenter = false);
+      void StrokeText(std::string Text, Vec2 Pos, ImColor Color, float FontSize = 15, bool KeepCenter = false);
     
-    inline  void Rectangle(Vec2 Pos, Vec2 Size, ImColor Color, float Thickness, float Rounding = 0);
-    inline void RectangleFilled(Vec2 Pos, Vec2 Size, ImColor Color, float Rounding = 0, int Nums = 15);
-    inline void RectangleFilledGraident(Vec2 Pos, Vec2 Size, ImColor TopColor, ImColor BotColor, float Rounding, int Nums = 15);
+      void Rectangle(Vec2 Pos, Vec2 Size, ImColor Color, float Thickness, float Rounding = 0);
+     void RectangleFilled(Vec2 Pos, Vec2 Size, ImColor Color, float Rounding = 0, int Nums = 15);
+     void RectangleFilledGraident(Vec2 Pos, Vec2 Size, ImColor TopColor, ImColor BotColor, float Rounding, int Nums = 15);
     
-    inline  void Line(Vec2 From, Vec2 To, ImColor Color, float Thickness);
+      void Line(Vec2 From, Vec2 To, ImColor Color, float Thickness);
     
-    inline  void Circle(Vec2 Center, float Radius, ImColor Color, float Thickness, int Num = 50);
-    inline  void CircleFilled(Vec2 Center, float Radius, ImColor Color, int Num = 50);
+      void Circle(Vec2 Center, float Radius, ImColor Color, float Thickness, int Num = 50);
+      void CircleFilled(Vec2 Center, float Radius, ImColor Color, int Num = 50);
    
-    inline  void ConnectPoints(std::vector<Vec2> Points, ImColor Color, float Thickness);
+      void ConnectPoints(std::vector<Vec2> Points, ImColor Color, float Thickness);
     
-    inline  void Arc(ImVec2 Center, float Radius, ImColor Color, float Thickness, float Aangle_begin, float Angle_end, float Nums = 15);
+      void Arc(ImVec2 Center, float Radius, ImColor Color, float Thickness, float Aangle_begin, float Angle_end, float Nums = 15);
    
-    inline  void MyCheckBox(const char* str_id, bool* v);
-    inline void MyCheckBox2(const char* str_id, bool* v);
-    inline  void MyCheckBox3(const char* str_id, bool* v);
-    inline  void MyCheckBox4(const char* str_id, bool* v);
+      void MyCheckBox(const char* str_id, bool* v);
+     void MyCheckBox2(const char* str_id, bool* v);
+      void MyCheckBox3(const char* str_id, bool* v);
+      void MyCheckBox4(const char* str_id, bool* v);
    
-    inline void ShadowRectFilled(Vec2 Pos, Vec2 Size, ImColor RectColor, ImColor ShadowColor, float ShadowThickness, Vec2 ShadowOffset, float Rounding = 0);
+     void ShadowRectFilled(Vec2 Pos, Vec2 Size, ImColor RectColor, ImColor ShadowColor, float ShadowThickness, Vec2 ShadowOffset, float Rounding = 0);
    
-    inline void ShadowCircle(Vec2 Pos, float Radius, ImColor CircleColor, ImColor ShadowColor, float ShadowThickness, Vec2 ShadowOffset, int Num = 30);
+     void ShadowCircle(Vec2 Pos, float Radius, ImColor CircleColor, ImColor ShadowColor, float ShadowThickness, Vec2 ShadowOffset, int Num = 30);
     
-    inline  bool SliderScalarEx1(const char* label, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags);
-    inline  bool SliderScalarEx2(const char* label, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags);
+      bool SliderScalarEx1(const char* label, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags);
+      bool SliderScalarEx2(const char* label, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags);
 
     
-    inline  void OpenWebpage(const char* url);
-    inline  void OpenWebpageButton(const char* label, const char* url);
+      void OpenWebpage(const char* url);
+      void OpenWebpageButton(const char* label, const char* url);
 
-    inline void MyProgressBar(float fraction, const ImVec2& Size, const char* overlay, ImVec4 Color);
-    inline  void SwitchButton(const char* str_id, bool* v);
+     void MyProgressBar(float fraction, const ImVec2& Size, const char* overlay, ImVec4 Color);
+      void SwitchButton(const char* str_id, bool* v);
 
 };
 
