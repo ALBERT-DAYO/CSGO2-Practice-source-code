@@ -2,7 +2,7 @@
 #include "overlay.h"
 
 
-inline void Overlay::ShowRawImage(unsigned char* image, int width, int height)
+ void Overlay::ShowRawImage(unsigned char* image, int width, int height)
 {
     ImGuiWindow* window = ImGui::GetCurrentWindow();
     if (window->SkipItems)
@@ -22,7 +22,7 @@ inline void Overlay::ShowRawImage(unsigned char* image, int width, int height)
     ImGui::Dummy(ImVec2(width, height));
 }
 
-inline void Overlay::SwitchButton(const char* str_id, bool* v)
+ void Overlay::SwitchButton(const char* str_id, bool* v)
 {
     ImVec2 p = ImGui::GetCursorScreenPos();
     ImDrawList* DrawList = ImGui::GetWindowDrawList();
@@ -53,25 +53,25 @@ inline void Overlay::SwitchButton(const char* str_id, bool* v)
     ImGui::Text(str_id);
 }
 
-inline void Overlay::MyProgressBar(float fraction, const ImVec2& Size, const char* overlay, ImVec4 Color)
+ void Overlay::MyProgressBar(float fraction, const ImVec2& Size, const char* overlay, ImVec4 Color)
 {
     ImGui::PushStyleColor(ImGuiCol_PlotHistogram, Color);
     ImGui::ProgressBar(fraction, Size, overlay);
     ImGui::PopStyleColor();
 }
 
-inline void Overlay::OpenWebpage(const char* url)
+ void Overlay::OpenWebpage(const char* url)
 {
     ShellExecuteA(NULL, "open", url, NULL, NULL, SW_SHOWNORMAL);
 }
 
-inline void Overlay::OpenWebpageButton(const char* label, const char* url)
+ void Overlay::OpenWebpageButton(const char* label, const char* url)
 {
     if (ImGui::Button(label))
         OpenWebpage(url);
 }
 
-inline void Overlay::MyText(std::string Text, bool isCenter) {
+ void Overlay::MyText(std::string Text, bool isCenter) {
     auto windowWidth = ImGui::GetWindowSize().x;
     auto textWidth = ImGui::CalcTextSize(Text.c_str()).x;
     if (isCenter)
@@ -79,7 +79,7 @@ inline void Overlay::MyText(std::string Text, bool isCenter) {
     ImGui::Text(Text.c_str());
 }
 
-inline void Overlay::Text(std::string Text, Vec2 Pos, ImColor Color, float FontSize, bool KeepCenter)
+ void Overlay::Text(std::string Text, Vec2 Pos, ImColor Color, float FontSize, bool KeepCenter)
 {
     if (!KeepCenter)
     {
@@ -93,7 +93,7 @@ inline void Overlay::Text(std::string Text, Vec2 Pos, ImColor Color, float FontS
     }
 }
 
-inline void Overlay::StrokeText(std::string Text, Vec2 Pos, ImColor Color, float FontSize, bool KeepCenter)
+ void Overlay::StrokeText(std::string Text, Vec2 Pos, ImColor Color, float FontSize, bool KeepCenter)
 {
     Overlay::Text(Text, Vec2(Pos.x - 1, Pos.y + 1), ImColor(0, 0, 0), FontSize, KeepCenter);
     Overlay::Text(Text, Vec2(Pos.x - 1, Pos.y - 1), ImColor(0, 0, 0), FontSize, KeepCenter);
@@ -102,12 +102,12 @@ inline void Overlay::StrokeText(std::string Text, Vec2 Pos, ImColor Color, float
     Overlay::Text(Text, Pos, Color, FontSize, KeepCenter);
 }
 
-inline void Overlay::Rectangle(Vec2 Pos, Vec2 Size, ImColor Color, float Thickness, float Rounding)
+ void Overlay::Rectangle(Vec2 Pos, Vec2 Size, ImColor Color, float Thickness, float Rounding)
 {
     ImGui::GetBackgroundDrawList()->AddRect(Pos.ToImVec2(), { Pos.x + Size.x,Pos.y + Size.y }, Color, Rounding, 0, Thickness);
 }
 
-inline void Overlay::RectangleFilled(Vec2 Pos, Vec2 Size, ImColor Color, float Rounding, int Nums)
+ void Overlay::RectangleFilled(Vec2 Pos, Vec2 Size, ImColor Color, float Rounding, int Nums)
 {
 
     ImDrawList* DrawList = ImGui::GetBackgroundDrawList();
@@ -135,7 +135,7 @@ inline void Overlay::RectangleFilled(Vec2 Pos, Vec2 Size, ImColor Color, float R
 }
 
 // Graident Rectangle from @Cr1ppl3
-inline void Overlay::RectangleFilledGraident(Vec2 Pos, Vec2 Size, ImColor TopColor, ImColor BotColor, float Rounding, int Nums)
+ void Overlay::RectangleFilledGraident(Vec2 Pos, Vec2 Size, ImColor TopColor, ImColor BotColor, float Rounding, int Nums)
 {
     ImDrawList* DrawList = ImGui::GetBackgroundDrawList();
     ImDrawCornerFlags rounding_corners = ImDrawCornerFlags_All;
@@ -159,22 +159,22 @@ inline void Overlay::RectangleFilledGraident(Vec2 Pos, Vec2 Size, ImColor TopCol
     }
 }
 
-inline void Overlay::Line(Vec2 From, Vec2 To, ImColor Color, float Thickness)
+ void Overlay::Line(Vec2 From, Vec2 To, ImColor Color, float Thickness)
 {
     ImGui::GetWindowDrawList()->AddLine(From.ToImVec2(), To.ToImVec2(), Color, Thickness);
 }
 
-inline void Overlay::Circle(Vec2 Center, float Radius, ImColor Color, float Thickness, int Num)
+ void Overlay::Circle(Vec2 Center, float Radius, ImColor Color, float Thickness, int Num)
 {
     ImGui::GetBackgroundDrawList()->AddCircle(Center.ToImVec2(), Radius, Color, Num, Thickness);
 }
 
-inline void Overlay::CircleFilled(Vec2 Center, float Radius, ImColor Color, int Num)
+ void Overlay::CircleFilled(Vec2 Center, float Radius, ImColor Color, int Num)
 {
     ImGui::GetBackgroundDrawList()->AddCircleFilled(Center.ToImVec2(), Radius, Color, Num);
 }
 
-inline void Overlay::ConnectPoints(std::vector<Vec2> Points, ImColor Color, float Thickness)
+ void Overlay::ConnectPoints(std::vector<Vec2> Points, ImColor Color, float Thickness)
 {
     if (Points.size() <= 0)
         return;
@@ -186,7 +186,7 @@ inline void Overlay::ConnectPoints(std::vector<Vec2> Points, ImColor Color, floa
     }
 }
 
-inline void Overlay::Arc(ImVec2 Center, float Radius, ImColor Color, float Thickness, float Angle_begin, float Angle_end, float Nums)
+ void Overlay::Arc(ImVec2 Center, float Radius, ImColor Color, float Thickness, float Angle_begin, float Angle_end, float Nums)
 {
     ImDrawList* DrawList = ImGui::GetBackgroundDrawList();
     float angle = (Angle_end - Angle_begin) / Nums;
@@ -198,7 +198,7 @@ inline void Overlay::Arc(ImVec2 Center, float Radius, ImColor Color, float Thick
     DrawList->PathStroke(Color, false, Thickness);
 }
 
-inline void Overlay::MyCheckBox(const char* str_id, bool* v)
+ void Overlay::MyCheckBox(const char* str_id, bool* v)
 {
     ImVec2 p = ImGui::GetCursorScreenPos();
     ImDrawList* DrawList = ImGui::GetWindowDrawList();
@@ -209,7 +209,7 @@ inline void Overlay::MyCheckBox(const char* str_id, bool* v)
     ImGui::InvisibleButton(str_id, ImVec2(Width, Height));
     if (ImGui::IsItemClicked())
         *v = !(*v);
-    // ×é¼þÒÆ¶¯¶¯»­
+    // ï¾—é® ï£²ï¾’ï¾†ï½¶ï½¯ï½¶ï½¯ï½»ï½­
     float t = *v ? 1.0f : 0.f;
     ImGuiContext& g = *GImGui;
     float AnimationSpeed = 0.08f;
@@ -218,13 +218,13 @@ inline void Overlay::MyCheckBox(const char* str_id, bool* v)
         float T_Animation = ImSaturate(g.LastActiveIdTimer / AnimationSpeed);
         t = *v ? (T_Animation) : (1.0f - T_Animation);
     }
-    // Êó±EE£ÑÕÉ«
+    // ï¾ŠîŠ¤ãƒ»ãƒ»ï½£ï¾‘ï¾•ï¾‰ï½«
     ImU32 Color;
     if (ImGui::IsItemHovered())
         Color = ImGui::GetColorU32(ImLerp(ImVec4(0.85f, 0.24f, 0.15f, 1.0f), ImVec4(0.55f, 0.85f, 0.13f, 1.000f), t));
     else
         Color = ImGui::GetColorU32(ImLerp(ImVec4(0.90f, 0.29f, 0.20f, 1.0f), ImVec4(0.60f, 0.90f, 0.18f, 1.000f), t));
-    // ×é¼þ»æÖÆ
+    // ï¾—é® ï£²ï½»è´ï¾†
     DrawList->AddRectFilled(ImVec2(p.x, p.y), ImVec2(p.x + Width, p.y + Height), Color, Height);
     DrawList->AddCircleFilled(ImVec2(p.x + Radius + t * (Width - Radius * 2) + (t == 0 ? 2 : -2), p.y + Radius + 2), Radius, IM_COL32(255, 255, 255, 255), 360);
     DrawList->AddCircle(ImVec2(p.x + Radius + t * (Width - Radius * 2) + (t == 0 ? 2 : -2), p.y + Radius + 2), Radius, IM_COL32(20, 20, 20, 80), 360, 1);
@@ -233,7 +233,7 @@ inline void Overlay::MyCheckBox(const char* str_id, bool* v)
     ImGui::Text(str_id);
 }
 
-inline void Overlay::MyCheckBox2(const char* str_id, bool* v)
+ void Overlay::MyCheckBox2(const char* str_id, bool* v)
 {
     ImVec2 p = ImGui::GetCursorScreenPos();
     ImDrawList* DrawList = ImGui::GetWindowDrawList();
@@ -244,7 +244,7 @@ inline void Overlay::MyCheckBox2(const char* str_id, bool* v)
     ImGui::InvisibleButton(str_id, ImVec2(Width, Height));
     if (ImGui::IsItemClicked())
         *v = !(*v);
-    // ×é¼þÒÆ¶¯¶¯»­
+    // ï¾—é® ï£²ï¾’ï¾†ï½¶ï½¯ï½¶ï½¯ï½»ï½­
     float t = *v ? 1.0f : 0.f;
     ImGuiContext& g = *GImGui;
     float AnimationSpeed = 0.15f;
@@ -253,13 +253,13 @@ inline void Overlay::MyCheckBox2(const char* str_id, bool* v)
         float T_Animation = ImSaturate(g.LastActiveIdTimer / AnimationSpeed);
         t = *v ? (T_Animation) : (1.0f - T_Animation);
     }
-    // Êó±EE£ÑÕÉ«
+    // ï¾ŠîŠ¤ãƒ»ãƒ»ï½£ï¾‘ï¾•ï¾‰ï½«
     ImU32 Color;
     if (ImGui::IsItemHovered())
         Color = ImGui::GetColorU32(ImLerp(ImVec4(0.08f, 0.18f, 0.21f, 1.0f), ImVec4(0.10f, 0.48f, 0.68f, 1.000f), t));
     else
         Color = ImGui::GetColorU32(ImLerp(ImVec4(0.12f, 0.22f, 0.25f, 1.0f), ImVec4(0.14f, 0.52f, 0.72f, 1.000f), t));
-    // ×é¼þ»æÖÆ
+    // ï¾—é® ï£²ï½»è´ï¾†
     DrawList->AddRectFilled(ImVec2(p.x, p.y), ImVec2(p.x + Width, p.y + Height), Color, 360);
     DrawList->AddCircleFilled(ImVec2(p.x + Radius + 2 + t * (Width - (Radius + 2) * 2), p.y + Radius + 2), Radius + 2, IM_COL32(255, 255, 255, 255), 360);
     DrawList->AddCircleFilled(ImVec2(p.x + Radius + t * (Width - Radius * 2) + (t == 0 ? 2 : -2), p.y + Radius + 2), Radius, IM_COL32(230, 230, 230, 255), 360);
@@ -270,7 +270,7 @@ inline void Overlay::MyCheckBox2(const char* str_id, bool* v)
 
 }
 
-inline void Overlay::MyCheckBox3(const char* str_id, bool* v)
+ void Overlay::MyCheckBox3(const char* str_id, bool* v)
 {
     ImVec2 p = ImGui::GetCursorScreenPos();
     ImDrawList* DrawList = ImGui::GetWindowDrawList();
@@ -282,7 +282,7 @@ inline void Overlay::MyCheckBox3(const char* str_id, bool* v)
 
     if (ImGui::IsItemClicked())
         *v = !(*v);
-    // ×é¼þÒÆ¶¯¶¯»­
+    // ï¾—é® ï£²ï¾’ï¾†ï½¶ï½¯ï½¶ï½¯ï½»ï½­
     float t = *v ? 1.0f : 0.f;
     ImGuiContext& g = *GImGui;
     float AnimationSpeed = 0.12f;
@@ -291,7 +291,7 @@ inline void Overlay::MyCheckBox3(const char* str_id, bool* v)
         float T_Animation = ImSaturate(g.LastActiveIdTimer / AnimationSpeed);
         t = *v ? (T_Animation) : (1.0f - T_Animation);
     }
-    // Êó±EE£ÑÕÉ«
+    // ï¾ŠîŠ¤ãƒ»ãƒ»ï½£ï¾‘ï¾•ï¾‰ï½«
     ImU32 Color;
     ImU32 TickColor1, TickColor2;
     if (ImGui::IsItemHovered())
@@ -304,19 +304,19 @@ inline void Overlay::MyCheckBox3(const char* str_id, bool* v)
 
     float Size = Width;
     float Scale = (float)(Size) / 20.0f;
-    // µ×É«
+    // ï½µï¾—ï¾‰ï½«
     DrawList->AddRectFilled(ImVec2(p.x, p.y), ImVec2(p.x + Width, p.y + Height), Color, 5, 15);
-    // Ñ¡ÖÐ¹´
+    // ï¾‘ï½¡ï¾–ï¾ï½¹ï½´
     DrawList->AddLine(ImVec2(p.x + 3 * Scale, p.y + Size / 2 - 2 * Scale), ImVec2(p.x + Size / 2 - 1 * Scale, p.y + Size - 5 * Scale), TickColor1, 3 * Scale);
     DrawList->AddLine(ImVec2(p.x + Size - 3 * Scale - 1, p.y + 3 * Scale + 1), ImVec2(p.x + Size / 2 - 1 * Scale, p.y + Size - 5 * Scale), TickColor1, 3 * Scale);
-    // Î´Ñ¡ÖÐ¹´
+    // ï¾Žï½´ï¾‘ï½¡ï¾–ï¾ï½¹ï½´
     DrawList->AddLine(ImVec2(p.x + 3 * Scale, p.y + Size / 2 - 2 * Scale), ImVec2(p.x + Size / 2 - 1 * Scale, p.y + Size - 5 * Scale), TickColor2, 3 * Scale);
     DrawList->AddLine(ImVec2(p.x + Size - 3 * Scale - 1, p.y + 3 * Scale + 1), ImVec2(p.x + Size / 2 - 1 * Scale, p.y + Size - 5 * Scale), TickColor2, 3 * Scale);
     ImGui::SameLine();
     ImGui::Text(str_id);
 }
 
-inline void Overlay::MyCheckBox4(const char* str_id, bool* v)
+ void Overlay::MyCheckBox4(const char* str_id, bool* v)
 {
     ImVec2 p = ImGui::GetCursorScreenPos();
     ImDrawList* DrawList = ImGui::GetWindowDrawList();
@@ -326,7 +326,7 @@ inline void Overlay::MyCheckBox4(const char* str_id, bool* v)
 
     if (ImGui::IsItemClicked())
         *v = !(*v);
-    // ×é¼þ¶¯»­
+    // ï¾—é® ï£²ï½¶ï½¯ï½»ï½­
     float t = *v ? 1.0f : 0.f;
     ImGuiContext& g = *GImGui;
     float AnimationSpeed = 0.12f;
@@ -351,7 +351,7 @@ inline void Overlay::MyCheckBox4(const char* str_id, bool* v)
     ImGui::Text(str_id);
 }
 
-inline void Overlay::ShadowRectFilled(Vec2 Pos, Vec2 Size, ImColor RectColor, ImColor ShadowColor, float ShadowThickness, Vec2 ShadowOffset, float Rounding)
+ void Overlay::ShadowRectFilled(Vec2 Pos, Vec2 Size, ImColor RectColor, ImColor ShadowColor, float ShadowThickness, Vec2 ShadowOffset, float Rounding)
 {
     ImDrawList* DrawList = ImGui::GetBackgroundDrawList();
     ImDrawFlags Flags = (Rounding > 0.f) ? ImDrawFlags_RoundCornersMask_ : ImDrawFlags_None;
@@ -359,14 +359,14 @@ inline void Overlay::ShadowRectFilled(Vec2 Pos, Vec2 Size, ImColor RectColor, Im
     DrawList->AddRectFilled(Pos.ToImVec2(), { Pos.x + Size.x,Pos.y + Size.y }, RectColor, Rounding);
 }
 
-inline void Overlay::ShadowCircle(Vec2 Pos, float Radius, ImColor CircleColor, ImColor ShadowColor, float ShadowThickness, Vec2 ShadowOffset, int Num)
+ void Overlay::ShadowCircle(Vec2 Pos, float Radius, ImColor CircleColor, ImColor ShadowColor, float ShadowThickness, Vec2 ShadowOffset, int Num)
 {
     ImDrawList* DrawList = ImGui::GetBackgroundDrawList();
     DrawList->AddShadowCircle(Pos.ToImVec2(), Radius, ShadowColor, ShadowThickness, ShadowOffset.ToImVec2(), ImDrawFlags_None, Num);
     DrawList->AddCircleFilled(Pos.ToImVec2(), Radius, CircleColor, Num);
 }
 
-inline bool Overlay::SliderScalarEx1(const char* label, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
+ bool Overlay::SliderScalarEx1(const char* label, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
 {
     ImGuiWindow* window = ImGui::GetCurrentWindow();
     if (window->SkipItems)
@@ -461,7 +461,7 @@ inline bool Overlay::SliderScalarEx1(const char* label, ImGuiDataType data_type,
     return value_changed;
 }
 
-inline bool Overlay::SliderScalarEx2(const char* label, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
+ bool Overlay::SliderScalarEx2(const char* label, ImGuiDataType data_type, void* p_data, const void* p_min, const void* p_max, const char* format, ImGuiSliderFlags flags)
 {
     ImGuiWindow* window = ImGui::GetCurrentWindow();
     if (window->SkipItems)
