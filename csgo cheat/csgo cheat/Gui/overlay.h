@@ -30,6 +30,7 @@ namespace Overlay
 
     void Cheat();
 
+    void ToggleButton(const char* str_id, bool* v);
 
        void ShowRawImage(unsigned char* image, int width, int height);
  
