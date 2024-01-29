@@ -84,44 +84,7 @@ static bool IsKeyDown(int VK)
     return (GetAsyncKeyState(VK) & 0x8000) != 0;
 }
 
-static void LoadStyle()
-{
-    ImGuiStyle& style = ImGui::GetStyle();
 
-    // Border
-    style.WindowBorderSize = 0.f;
-    style.FrameBorderSize = 0.f;
-    style.ChildBorderSize = 1.f;
-
-    // Roundering
-    style.WindowRounding = 6.f;
-    style.FrameRounding = 2.f;
-    style.ChildRounding = 6.f;
-    style.PopupRounding = 3.f;
-
-    style.WindowPadding = ImVec2(12.f, 12.f);
-    style.WindowTitleAlign = ImVec2(0.5f, 0.5f);
-    style.GrabMinSize = 6;
-
-    ImVec4* colors = ImGui::GetStyle().Colors;
-    colors[ImGuiCol_WindowBg] = ImVec4(0.08f, 0.08f, 0.08f, 1.00f);
-    colors[ImGuiCol_ChildBg] = ImVec4(1.00f, 1.00f, 1.00f, 0.06f);
-    colors[ImGuiCol_TitleBg] = ImVec4(0.22f, 0.22f, 0.22f, 1.00f);
-    colors[ImGuiCol_TitleBgActive] = ImVec4(0.89f, 0.10f, 0.44f, 1.00f);
-
-    colors[ImGuiCol_CheckMark] = ImVec4(0.00f, 0.50f, 0.92f, 1.00f);
-    colors[ImGuiCol_Separator] = ImVec4(1.00f, 1.00f, 1.00f, 0.14f);
-    colors[ImGuiCol_FrameBg] = ImVec4(1.00f, 1.00f, 1.00f, 0.07f);
-    colors[ImGuiCol_FrameBgHovered] = ImVec4(1.00f, 1.00f, 1.00f, 0.17f);
-    colors[ImGuiCol_FrameBgActive] = ImVec4(1.00f, 0.94f, 1.00f, 0.28f);
-    colors[ImGuiCol_SliderGrab] = ImVec4(0.06f, 0.45f, 0.98f, 1.00f);
-    colors[ImGuiCol_SliderGrabActive] = ImVec4(0.06f, 0.59f, 0.98f, 1.00f);
-    colors[ImGuiCol_PopupBg] = ImVec4(0.f, 0.f, 0.f, 0.f);
-
-    colors[ImGuiCol_Button] = ImVec4(1.00f, 1.00f, 1.00f, 0.01f);
-    colors[ImGuiCol_ButtonHovered] = ImVec4(0.06f, 0.45f, 0.98f, 1.00f);
-    colors[ImGuiCol_ButtonActive] = ImVec4(0.06f, 0.59f, 0.98f, 1.00f);
-}
 
 static void CleanupRenderTarget()
 {
